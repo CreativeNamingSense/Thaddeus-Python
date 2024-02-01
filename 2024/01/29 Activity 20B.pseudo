@@ -1,0 +1,54 @@
+// normal
+
+DECLARE Height, Base, Radius : INTEGER
+DECLARE Shape : STRING
+CONSTANT pi <- 3.14
+
+INPUT Shape
+IF LCASE(Shape) = 'circle' THEN
+    INPUT Radius
+    OUTPUT (pi * (Radius * Radius))
+ELSEIF LCASE(Shape) = 'rectangle' OR 'square' OR 'parallelogram' THEN
+    INPUT Height
+    INPUT Base
+    OUTPUT (Base * Height)
+ELSEIF LCASE(Shape) = 'triangle'THEN
+    INPUT Height
+    INPUT Base
+    OUTPUT ((Base * Height) / 2)
+ENDIF
+
+
+//  modular
+
+
+DECLARE Height, Base, Radius : INTEGER
+DECLARE Shape : STRING
+CONSTANT pi <- 3.14
+
+PROCEDURE Circle(Radius : INTEGER):
+    OUTPUT (pi * (Radius * Radius))
+END PROCEDURE
+
+PROCEDURE Quadilateral(Height, Base : INTEGER):
+    OUTPUT (Base * Height)
+END PROCEDURE
+
+PROCEDURE Triangle(Height, Base : INTEGER):
+    OUTPUT ((Base * Height) / 2)
+END PROCEDURE
+
+
+INPUT Shape
+IF LCASE(Shape) = 'circle' THEN
+    INPUT Radius  
+    Circle(Radius) 
+ELSEIF LCASE(Shape) = 'rectangle' OR 'square' OR 'parallelogram' THEN
+    INPUT Height
+    INPUT Base   
+    Quadilateral(Height, Base) 
+ELSEIF LCASE(Shape) = 'triangle' THEN
+    INPUT Height
+    INPUT Base
+    Triangle(Height, Base)
+ENDIF

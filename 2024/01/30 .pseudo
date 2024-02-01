@@ -1,0 +1,17 @@
+CLASS Dog
+    name : STRING
+    age : REAL
+    PROCEDURE sit()
+        OUTPUT name, " is sitting."
+    ENDPROCEDURE
+    PROCEDURE bark()
+        OUTPUT namke, " is barking."
+    ENDPROCEDURE
+ENDCLASS
+
+
+myDog <- NEW Dog()
+myDog.name <- "Rocky"
+myDog.age <- 3
+myDog.sit()
+myDog.bark()

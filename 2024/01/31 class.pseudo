@@ -1,0 +1,24 @@
+CLASS Student
+    StudentName : STRING
+    StudentClass : STRING
+    StudentAge : INTEGER
+    StudentHouse : STRING
+    PROCEDURE NEW(name, class, age, house)
+        StudentName <- name
+        StudentClass <- class
+        StudentAge <- age
+        StudentHouse <- house
+    ENDPROCEDURE
+    PROCEDURE StudentDetails()
+        OUTPUT "Student name is : ", StudentName
+        OUTPUT "Student class is : ", StudentClass
+        OUTPUT "Student age is : ", StudentAge
+        OUTPUT "Student house is : ", StudentHouse
+ENDCLASS
+
+
+
+FirstStudent <- NEW Student("Mike Oxlong", "JC 2 Acting", 16, "Orange and Black Ave No.17")
+FirstStudent.StudentDetails()
+SecondStudent <- NEW Student("Joe", "JC 2 Gaslighting", 17, "Tax Evasion Ave No.01")
+SecondStudent.StudentDetails()

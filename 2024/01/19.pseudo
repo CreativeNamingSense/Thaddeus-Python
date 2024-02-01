@@ -1,0 +1,75 @@
+TYPE Node
+    DECLARE Lpointer: INTEGER
+    DECLARE Data: INTEGER
+    DECLARE Rpointer: INTEGER
+END TYPE
+
+DECLARE TREE: ARRAY[0..10] of Node
+DECLARE Root: INTEGER
+DECLARE LeftBranch : BOOLEAN
+DECLARE ItemPointer, NextItemPointer, HeapPointer, NewItemPointer: INTEGER
+
+FUNCTION SearchItem(Item : INTEGER )RETURNS INTEGER
+    ItemPointer <- Root
+    WHILE ItemPointer <> -1 AND TREE[ItemPointer].Data <> Item
+        IF Item > TREE[ItemPointer].Data
+            THEN ItemPointer <- TREE[ItemPointer].Rpointer
+            RETURNS ItemPointer
+        ELSE
+            THEN ItemPointer <- TREE[ItemPointer].Lpointer
+            RETURNS ItemPointer
+    END WHILE
+
+    RETURNS ItemPointer
+END FUNCTION
+
+
+PROCEDURE AddItem(Item: INTEGER)
+    
+    IF HeapPointer = -1
+        THEN 
+            OUTPUT "Tree is full."
+        ELSE    
+            NewItemPointer <- HeapPointer 
+            HeapPointer <- TREE[HeapPointer].Lpointer
+            NextItemPointer <- Root
+    ENDIF 
+
+    IF NextItemPointer = -1
+        THEN
+            Root <- NewItemPointer
+        ELSE 
+            WHILE NextItemPointer <> -1
+                ItemPointer <- NextItemPointer
+                IF TREE[NextItemPointer].Item > Item
+                    THEN
+                        NextItemPointer <- TREE[NextItemPointer].Lpointer
+                        LeftBranch <- TRUE
+                    ELSE
+                        NextItemPointer <- TREE[NextItemPointer].Rpointer
+                        LeftBranch <- FALSE
+                ENDIF
+            ENDWHILE
+    ENDIF
+
+    IF LeftBranch = TRUE 
+        THEN 
+            Tree[ItemPointer].Lpointer <- NewItemPointer
+        ELSE
+            Tree[ItemPointer].Rpointer <- NewItemPointer
+    ENDIF
+
+    Tree[NewItemPointer].Lpointer <- -1
+    Tree[NewItemPointer].Rpointer <- -1
+    Tree[NewItemPointer].Item <- Item
+
+
+END PROCEDURE
+
+
+
+
+OUTPUT "Please input a value to search for."
+INPUT Item
+SearchItem(Item)
+
