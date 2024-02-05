@@ -45,3 +45,27 @@ ENDCLASS
 
 Teacher1 <- New Teacher("Shuaib", "Khan")
 Teacher1.ShowDetails()
+
+
+CLASS Student INHERITS Person
+
+    DECLARE Grade : CHAR
+
+    PUBLIC PROCEDURE New(FName : STRING, LName : STRING, Grade : CHAR)
+
+        Person.New(FName, LName)
+        Grade <- Grade
+
+    ENDPROCEDURE
+
+    PUBLIC PROCEDURE ShowDetails()
+
+        Person.ShowDetails()
+        OUTPUT "Grade is: ", Grade
+
+    ENDPROCEDURE
+
+ENDCLASS
+
+Student1 <- New Teacher("Shuaib", "Khan")
+Student1.ShowDetails()
