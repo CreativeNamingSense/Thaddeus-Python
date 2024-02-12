@@ -23,15 +23,33 @@ class Node:
         if self.left != None:
             self.left.inOrder()
         print(self.item)
-
         if self.right != None:
             self.right.inOrder()
+
+    def preOrder(self):
+        print(self.item)
+        if self.left != None:
+            self.left.preOrder()        
+        if self.right != None:
+            self.right.preOrder()
+
+    def postOrder(self):
+        if self.left != None:
+            self.left.postOrder()        
+        if self.right != None:
+            self.right.postOrder()
         print(self.item)
 
 
-
 tree = Node(27)
-tree = Node.insert(20)
-tree = Node.insert(29)
-tree = Node.insert(30)
-tree = Node.insert(12)
+tree.insert(20)
+tree.insert(29)
+tree.insert(30)
+tree.insert(12)
+tree.insert(25)
+
+tree.inOrder()
+print()
+tree.preOrder()
+print()
+tree.postOrder()
