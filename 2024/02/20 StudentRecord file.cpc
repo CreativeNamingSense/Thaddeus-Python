@@ -1,0 +1,41 @@
+TYPE StudentData
+    DECLARE StudentName : STRING
+    DECLARE StudentID : STRING
+    DECLARE StudentDOB : DATE
+    DECLARE FullTime : BOOLEAN
+ENDTYPE
+
+DECLARE StudentRecord : ARRAY [1:50] OF  StudentData
+DECLARE StudentFile : STRING
+DECLARE counter : INTEGER
+
+counter <- 1
+
+REPEAT
+    OUTPUT "Please enter student name: "
+    INPUT StudentRecord[counter].StudentName
+    OUTPUT "Please enter student ID: "
+    INPUT StudentRecord[counter].StudentID
+    OUTPUT "Please enter student Date of Birth: "
+    INPUT StudentRecord[counter].StudentDOB
+    OUTPUT "Is the student full time: "
+    INPUT StudentRecord[counter].FullTime
+
+    counter <- counter + 1
+
+UNTIL StudentRecord[counter].StudentName = "" OR counter = 50
+
+OPENFILE StudentFile FOR WRITE
+
+FOR Index <- 1 TO (counter - 1):
+    PUTRECORD StudentFile, StudentRecord[Index]
+NEXT Index
+
+
+
+
+
+
+
+
+
