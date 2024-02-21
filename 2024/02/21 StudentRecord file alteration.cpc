@@ -1,0 +1,47 @@
+TYPE StudentRecord
+    DECLARE name : STRING
+    DECLARE ID : INTEGER
+    DECLARE DOB : DATE
+    DECLARE FullTime : BOOLEAN
+ENDTYPE
+
+DECLARE Student, NewStudent : StudentRecord
+DECLARE NSFile, SFile : STRING
+DECLARE Flag : BOOLEAN
+
+NSFile <- "newStudentFile.dat"
+SFile <- "studentFile.dat"
+
+OUTPUT "Please enter student name"
+INPUT NewStudent.name
+OUTPUT "Please enter student ID"
+INPUT NewStudent.Id
+OUTPUT "Please enter student date of birth"
+INPUT NewStudent.DOB
+OUTPUT "Please enter student full time status"
+INPUT NewStudent.FullTime
+
+
+OPENFILE NSFile FOR WRITE
+OPENFILE SFile FOR READ
+
+REPEAT
+    GETRECORD SFile, Student
+    IF Student.ID > NewStudent.ID THEN
+        PUTRECORD NSFile, NewStudent
+        Flag <- TRUE
+    ENDIF
+    GETRECORD SFile, Student
+UNTIL EOF(SFile) OR Flag = TRUE
+
+REPEAT  
+    IF Flag = FALSE THEN
+        PUTRECORD NSFile, NewStudent
+    ENDIF
+    GETRECORD SFile, Student
+    PUTRECORD NSFile, Student
+UNTIL EOF(SFile)
+
+
+DELETE SFile
+RENAME NSFile, SFile
