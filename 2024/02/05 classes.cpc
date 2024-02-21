@@ -1,0 +1,71 @@
+CLASS Person
+
+    DECLARE FName : STRING
+    DECLARE LName :STRING
+
+    PUBLIC PROCEDURE New(FName:STRING, LName:STRING)
+
+        FirstName <- FName
+        LastName <- LName
+
+    ENDPROCEDURE
+
+    PUBLIC PROCEDURE ShowDetails()
+
+        OUTPUT "First Name: ", FirstName
+        OUTPUT "Last Name: ", LastName
+
+    ENDPROCEDURE
+
+ENDCLASS
+
+Person1 <- New Person("Thaddeus", "Chalis")
+Person1.ShowDetails()
+
+
+CLASS Teacher INHERITS Person
+
+    DECLARE Salary : REAL
+
+    PUBLIC PROCEDURE New(FName : STRING, LName : STRING, Sal : REAL)
+
+        Person.New(FName, LName)
+        Salary <- Sal
+
+    ENDPROCEDURE
+
+    PUBLIC PROCEDURE ShowDetails()
+
+        Person.ShowDetails()
+        OUTPUT "Salary is: ", Salary
+
+    ENDPROCEDURE
+
+ENDCLASS
+
+Teacher1 <- New Teacher("Shuaib", "Khan")
+Teacher1.ShowDetails()
+
+
+CLASS Student INHERITS Person
+
+    DECLARE Grade : CHAR
+
+    PUBLIC PROCEDURE New(FName : STRING, LName : STRING, Grade : CHAR)
+
+        Person.New(FName, LName)
+        Grade <- Grade
+
+    ENDPROCEDURE
+
+    PUBLIC PROCEDURE ShowDetails()
+
+        Person.ShowDetails()
+        OUTPUT "Grade is: ", Grade
+
+    ENDPROCEDURE
+
+ENDCLASS
+
+Student1 <- New Teacher("Shuaib", "Khan")
+Student1.ShowDetails()
