@@ -1,0 +1,30 @@
+TYPE StudentRecord
+    DECLARE name : STRING
+    DECLARE ID : INTEGER
+    DECLARE DOB : DATE
+    DECLARE FullTime : BOOLEAN
+ENDTYPE
+
+DECLARE Student : StudentRecord
+DECLARE RegisterID, address : INTEGER
+DECLARE studentFile : STRING
+
+studentFile <- "studentFile.dat"
+
+OUTPUT "Please enter student name: "
+INPUT Student.name
+OUTPUT "Please enter student ID: "
+INPUT Student.ID
+OUTPUT "Please enter student Date of Birth: "
+INPUT Student.DOB
+OUTPUT "Is the student full time: "
+INPUT Student.FullTime
+
+address <- hash(Student, Student.ID)
+
+OPENFILE studentFile FOR WRITE
+
+SEEK studentFile, address
+PUTRECORD studentFile, student
+
+CLOSEFILE studentFile
