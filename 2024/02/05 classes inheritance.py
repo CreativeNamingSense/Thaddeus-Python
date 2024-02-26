@@ -15,6 +15,7 @@ P1.PersonDetails()
 
 
 class Teacher(Person):
+
     def __init__(self,FName,LName,Sal):
         Person.__init__(self, FName,LName)
         self.Salary = Sal
@@ -38,4 +39,9 @@ class Student(Person):
 
 
 S1 = Student("Thaddeus", "Chalis", 'A')
+S2 = Student("Darren", "Putra", 'B')
 S1.PersonDetails()
+AS = []
+AS.append(S1)
+AS.append(S2)
+print(AS[0].FirstName)
