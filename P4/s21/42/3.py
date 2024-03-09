@@ -46,26 +46,28 @@ def readData(arrayTreasure):
         
         
         
-arrayTreasure = [] #array[5] of type treasureChest
-flag = False
+def main():
+    arrayTreasure = [] #array[5] of type treasureChest
+    flag = False
 
 
-readData(arrayTreasure)    
-questionNum = int(input("Please input which question you would like to do (1 to 5): "))
-print()
-try:
-    print(f"Your question is: ({arrayTreasure[questionNum - 1].getQuestion()})")
-    userAttempts = 0
-    while flag == False:   
-        userAnswer = int(input("Please input your answer: "))
-        if arrayTreasure[questionNum - 1].checkAnswer(userAnswer) == True:
-            userAttempts = userAttempts + 1
-            pointsAwarded = arrayTreasure[questionNum - 1].getPoints(userAttempts)
-            flag = True
-        else:
-            print("Your answer is incorrect.")
-            userAttempts = userAttempts + 1  
-    print(f"You got {pointsAwarded} points.")
-except IndexError:
-    print("That is not an available number.")
+    readData(arrayTreasure)    
+    questionNum = int(input("Please input which question you would like to do (1 to 5): "))
+    print()
+    try:
+        print(f"Your question is: ({arrayTreasure[questionNum - 1].getQuestion()})")
+        userAttempts = 0
+        while flag == False:   
+            userAnswer = int(input("Please input your answer: "))
+            if arrayTreasure[questionNum - 1].checkAnswer(userAnswer) == True:
+                userAttempts = userAttempts + 1
+                pointsAwarded = arrayTreasure[questionNum - 1].getPoints(userAttempts)
+                flag = True
+            else:
+                print("Your answer is incorrect.")
+                userAttempts = userAttempts + 1  
+        print(f"You got {pointsAwarded} points.")
+    except IndexError:
+        print("That is not an available number.")
 
+main()
