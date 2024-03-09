@@ -4,6 +4,12 @@ class node:
         self.data = myData
         self.nextNode = myNextNode
         
+    def getData(self):
+        return self.data
+
+    def getNode(self):
+        return self.nextNode
+        
 def addNode(linkedList, currentPointer, myemptyList):
     dataToAdd = int(input("Please input the data to add: "))
     global emptyList
