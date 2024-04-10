@@ -1,10 +1,10 @@
 class Picture:
 
     def __init__(self, pDescription, pWidth, pHeight, pFrameColour):
-        self.__description = pDescription #string
-        self.__width = pWidth #integer
-        self.__height = pHeight #integer
-        self.__frameColour = pFrameColour #string
+        self.__description = pDescription #string private
+        self.__width = pWidth #integer private
+        self.__height = pHeight #integer private
+        self.__frameColour = pFrameColour #string private
         
     def GetDescription(self):
        return self.__description
@@ -46,8 +46,8 @@ for i in range(100):
 
 counter, myPictures = ReadData(myPictures, fileName)
 
-picColour = str(input("Please input the colour of the picture:"))
-picHeight = int(input("Please input the height of the picture:"))
+picColour = str(input("Please input the colour of the picture: "))
+picHeight = int(input("Please input the height of the picture: "))
 picWidth = int(input("Please input the width of the picture: "))
 
 index = 0
